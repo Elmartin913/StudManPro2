@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PanDjango</title>
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- font awsome -->
+    <link rel="stylesheet" href="{% static 'LP/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!-- local -->
+    <link rel="stylesheet" href="{% static 'LP/main.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'LP/img/flav.png' %}" />
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <nav id="nav">
+            <div class="nav-container">
+                <img src="{% static 'LP/img/logo1.png' %}" alt="logo-nav">
+                <div class="menu-btn">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <ul>
+                <li><a href="#nav">Start</a></li>
+                <li><a href="#skills">Projekt</a></li>
+                <li><a href="#footer">Kontakt</a></li>
+                <li><a href="/login">Logowanie</a></li>
+                <li><a href="/signup">Rejestracja</a></li>
+            </ul>
+        </nav>
+        <!--banner -->
+        <div id="banner">
+            <div class="banner-text">
+                <h1>System Zarządzania Szkołą</h1>
+                <a href="#home">Dowiedz się więcej</a>
+            </div>
+        </div>
+    </header>
+    <!-- Section Skills -->
+    <section id="skills">
+        <!-- title -->
+        <div class="title">
+            <div class="title-text">
+                <h2 class="title-heading">O projekcie</h2>
+                <div class="title-underline"></div>
+                <p class="title-subheading">Zobacz, która z usług jest Ci teraz najbardziej potrzebna.</p>
+            </div>
+        </div>
+        <!-- end of title -->
+        <div class="skill-center">
+            <!-- skill -->
+            <article class="skill">
+                <i class="fas fa-code fa-3x"></i>
+                <h3>Strony Internetowe</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ut excepturi magni recusandae optio soluta.</p>
+            </article>
+            <!-- skill -->
+            <article class="skill">
+                <i class="fas fa-database fa-3x"></i>
+                <h3>Aplikacje Webowe</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ut excepturi magni recusandae optio soluta.</p>
+            </article>
+            <!-- skill -->
+            <article class="skill">
+                <i class="fas fa-chart-line fa-3x"></i>
+                <h3>Kampanie marketingowe</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo ut excepturi magni recusandae optio soluta.</p>
+            </article>
+        </div>
+    </section>
+    <!-- End of Section Skills -->
+
+    <!-- Section Contact -->
+    <section id="proposals">
+        <!-- title -->
+        <div class="proposal">
+            <div class="title-text banner-text">
+                <h2 class="title-heading">Potrzebujesz propozycji ?</h2>
+                <div class="title-underline"></div>
+                <p class="title-subheading">Skontaktuj się ze mną, aby uzyskać niezobowiązującą propozycję współpracy, na widok której chciwie się uśmiechniesz.</p>
+
+                <a href="#home">Skontaktuj się</a>
+
+            </div>
+        </div>
+        <!-- end of title -->
+
+    </section>
+    <!-- End of  Contact Section -->
+
+    <footer id="footer">
+        <div class="footer-center">
+            <article class="footer-box">
+                <img src="{% static 'LP/img/logo2.png' %}" alt="">
+                <ul>
+                    <li><a href=""><i class="fab fa-github-square fa-2x"></i></a></li>
+                    <li><a href=""><i class="fab fa-linkedin fa-2x"></i></a></li>
+                    <li><a href=""><i class="fas fa-envelope-square fa-2x"></i></a></li>
+                    <li><a href=""><i class="fas fa-phone-square fa-2x"></i></a></li>
+                </ul>
+
+            </article>
+        </div>
+    </footer>
+    <footer id="second-footer">
+        <p>&copy; Copyright 2018 by pandjango.pl</p>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> -->
+    <script src="{% static 'LP/fontawesome-all.js' %}"></script>
+    <script src="{% static 'LP/script.js' %}"></script>
+</body>
+
+</html>

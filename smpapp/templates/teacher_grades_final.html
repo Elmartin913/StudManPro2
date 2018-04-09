@@ -1,0 +1,18 @@
+{% extends 'panel_1.html' %}
+
+{% block content %}
+
+    <p>Student: <b>{{ stud.first_name }} {{ stud.last_name }}</b></p>
+    <p>Klasa: <b>{{ stud.get_school_class_display }}</b></p>
+    <p>Oceny: {% for g in grades %}{{ g.get_grade_display }}, {% endfor %}</p>
+    <p>Średnia: {{ avg }}</p>
+
+<br>
+    <form method="post">
+
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+    </form>
+
+{% endblock %}

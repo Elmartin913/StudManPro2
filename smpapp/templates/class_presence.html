@@ -1,0 +1,19 @@
+{% extends 'panel_1.html' %}
+
+
+
+{% block content %}
+
+<h2>Lista obecności</h2>
+<p>Student: <b>{{ student.first_name }} {{ student.last_name }}</b></p>
+<p>Dzień: <b>{{ date }}</b></p>
+
+    <form method="POST">
+
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit">
+    </form>
+
+{% endblock %}

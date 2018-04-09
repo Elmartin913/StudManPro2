@@ -1,0 +1,193 @@
+{% extends 'panel.html' %}
+
+
+    {% block teacher_diary %}
+     <div class="title">
+            <div class="title-icon">
+                <i class="fa fa-gears"></i>
+            </div>
+            <div class="title-text">
+                <h2 class="title-heading">Dziennik nauczycielski</h2>
+            </div>
+        </div>
+     <div class="diary-center">
+         <h3>Klasa: {% for c in cp_class %}
+                         {% if class_id == c.0 %}
+                             {{ c.1 }}
+                         {% endif %}
+                     {% endfor %}
+         </h3>
+         <h3>Przedmiot: {{ subject.name }}</h3>
+
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Imię Nazwisko</th>
+                 <th>Oceny</th>
+                 <th></th>
+              </tr>
+         </thead>
+         <tbody>
+         {% for s in students %}
+             <tr>
+                 <td>{{ s.id }}</td>
+                 <td><a href="/student/{{ s.id }}">{{ s.first_name }} {{ s.last_name }}</a></td>
+                 <td>
+                     {% for g in grades %}
+                         {% if g.student_id == s.id %}
+                            {{ g.get_grade_display }}&nbsp;
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+
+                 <td><a href="/teacher/{{ class_id }}/{{ subject.id }}/{{ s.id }}/grades">Oceń</a></td>
+             </tr>
+        {% endfor %}
+        </tbody>
+     </table>
+     </div>
+    {% endblock teacher_diary %}
+
+    {% block final_grades %}
+     <div class="title">
+            <div class="title-icon">
+                <i class="fa fa-gears"></i>
+            </div>
+            <div class="title-text">
+                <h2 class="title-heading">Oceny semestralne</h2>
+            </div>
+        </div>
+     <div class="diary-center">
+         <h3>Klasa: {% for c in cp_class %}
+                         {% if class_id == c.0 %}
+                             {{ c.1 }}
+                         {% endif %}
+                     {% endfor %}
+         </h3>
+         <h3>Przedmiot: {{ subject.name }}</h3>
+
+     <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Imię Nazwisko</th>
+                 <th>Półrocze</th>
+                 <th>Ocena końcowa</th>
+                 <th></th>
+              </tr>
+         </thead>
+         <tbody>
+         {% for s in students %}
+             <tr>
+                 <td>{{ s.id }}</td>
+                 <td><a href="/student/{{ s.id }}">{{ s.first_name }} {{ s.last_name }}</a></td>
+                 <td>
+                     {% for fg in finals %}
+                         {% if fg.student_id == s.id %}
+                            {{ fg.get_half_display }}
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+                 <td>
+                         {% for fg in finals %}
+                             {% if fg.student_id == s.id %}
+                                 {{ fg.get_final_display }}
+                             {% endif %}
+                        {% endfor %}
+
+                 </td>
+                 <td><a href="/teacher/{{ class_id }}/{{ subject.id }}/{{ s.id }}/finalgrades">Oceń</a></td>
+             </tr>
+        {% endfor %}
+        </tbody>
+     </table>
+     </div>
+    {% endblock final_grades %}
+
+        {% block absence_list %}
+        <div class="title">
+            <div class="title-icon">
+                <i class="fa fa-gears"></i>
+            </div>
+            <div class="title-text">
+                <h3 class="title-heading">Lista obecności</h3>
+                <h4>Dzień: {{ date }}</h4>
+            </div>
+        </div>
+   <div class="absence-center">
+<table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Imię Nazwisko</th>
+                 <th>Obecny</th>
+                 <th></th>
+              </tr>
+         </thead>
+         <tbody>
+         {% for s in students %}
+             <tr>
+                 <td>{{ s.id }}</td>
+                 <td><a href="/student/{{ s.id }}">{{ s.first_name }} {{ s.last_name }}</a></td>
+                 <td>
+                     {% for pre in presence_list %}
+                         {% if pre.student_id == s.id %}
+                            {{ pre.present }}
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+                 <td><a href="/teacher/{{ class_id }}/{{ subject.id }}/{{ s.id }}/pres">Edytuj</a></td>
+             </tr>
+        {% endfor %}
+        </tbody>
+     </table>
+   </div>
+    {% endblock absence_list %}
+
+    {% block used_unprepared %}
+<div class="title">
+            <div class="title-icon">
+                <i class="fa fa-gears"></i>
+            </div>
+            <div class="title-text">
+                <h3 class="title-heading">Nieprzygotowania</h3>
+            </div>
+        </div>
+   <div class="unprepared-center">
+    <table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Id</th>
+                 <th>Imię Nazwisko</th>
+                 <th>1</th>
+                 <th>2</th>
+                 <th></th>
+              </tr>
+         </thead>
+         <tbody>
+         {% for s in students %}
+             <tr>
+                 <td>{{ s.id }}</td>
+                 <td><a href="/student/{{ s.id }}">{{ s.first_name }} {{ s.last_name }}</a></td>
+                 <td>
+                     {% for unp in unprepared_list %}
+                         {% if unp.student_id == s.id %}
+                            {{ unp.unprep_one_used }}
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+                 <td>
+                     {% for unp in unprepared_list %}
+                         {% if unp.student_id == s.id %}
+                            {{ unp.unprep_two_used }}
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+                 <td><a href="/teacher/{{ class_id }}/{{ subject.id }}/{{ s.id }}/unpr">Edytuj</a></td>
+             </tr>
+        {% endfor %}
+        </tbody>
+     </table>
+   </div>
+    {% endblock used_unprepared %}

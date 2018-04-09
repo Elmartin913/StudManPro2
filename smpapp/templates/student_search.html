@@ -1,0 +1,26 @@
+{% extends 'panel_1.html' %}
+
+{% block content %}
+    <h2>Wyszukaj studenta</h2>
+    <form method="POST">
+
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit">
+    </form>
+
+        {% for s in students %}
+            <hr>
+            <p>id: <strong>{{ s.id }}</strong></p>
+            <p>Imię: <strong>{{ s.first_name }}</strong></p>
+            <p>Nazwisko: <strong>{{ s.last_name }}</strong></p>
+            <p>Klasa: <strong>{{ s.get_school_class_display }}</strong></p>
+            <p>Aktywny: <strong>{{ s.active }}</strong></p>
+            <p><a href="/student/{{ s.id }}">Więcej danych</a></p>
+
+        {% empty %}
+            <p>Wyszukaj ponownia</p>
+        {% endfor%}
+
+{% endblock %}

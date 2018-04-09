@@ -1,0 +1,17 @@
+{% extends 'panel_1.html' %}
+
+{% block content %}
+
+<p>{{ book.title }}</p>
+<p>{{ book.get_gender_display }}</p>
+<p>{{ book.author }}</p>
+<p>{{ book.owner }}</p>
+<p>{{ book.is_borrowed }}</p>
+<p>{{ book.date_added  }}</p>
+<ul>
+    {% for tag in book.tags.all %}
+        <li>{{ tag.tag_name}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% extends 'panel_1.html %}
+
+<ul>
+    {% for object in object_list %}
+        <li>{{ object.username }}, {{ object.last_name }}</li>
+    {% endfor %}
+</ul>

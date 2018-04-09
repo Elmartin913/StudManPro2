@@ -1,0 +1,98 @@
+{% extends 'student_base.html' %}
+
+      {% block profil %}
+      <div class="title">
+                <div class="title-icon">
+                    <i class="fa fa-gears"></i>
+                </div>
+                <div class="title-text">
+                    <h2 class="title-heading">Profil</h2>
+                </div>
+            </div>
+      <div class="profil-center">
+            <p>Imię: {{ student.first_name }}</p>
+            <p>Nazwisko: {{ student.last_name }}</p>
+            <p>Klasa: {{ student.get_school_class_display }}</p>
+      </div>
+      {% endblock profil %}
+
+      {% block diary %}
+      <div class="title">
+                <div class="title-icon">
+                    <i class="fa fa-gears"></i>
+                </div>
+                <div class="title-text">
+                    <h2 class="title-heading">Dzienniczek</h2>
+                </div>
+            </div>
+      <div class="diary-center">
+      <table class="table table-striped">
+         <thead>
+             <tr>
+                  <th>Id</th>
+                  <th>Przedmiot</th>
+                   <th>Oceny</th>
+              </tr>
+         </thead>
+         <tbody>
+         {% for sub in cp_subjects %}
+             <tr>
+                 <td>{{ sub.id }}</td>
+                 <td>{{ sub }}</td>
+                 <td>
+                     <ul>
+                         {% for g in grades %}
+                             {% if g.student_id == sub.id %}
+                                <li>{{ g.grade }}</li>
+                             {% endif %}
+                         {% endfor %}
+                     </ul>
+
+                 </td>
+             </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      {% endblock diary %}
+
+      {% block unprepared %}
+      <div class="title">
+                <div class="title-icon">
+                    <i class="fa fa-gears"></i>
+                </div>
+                <div class="title-text">
+                    <h2 class="title-heading">Nieprzygotowania</h2>
+                </div>
+            </div>
+      <div class="unprepared-center">
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th>Przedmiot</th>
+                  <th>Nieprzydotowanie 1</th>
+                  <th>Nieprzydotowanie 2</th>
+              </tr>
+              {% for sub in cp_subjects %}
+              <tr>
+                 <td>{{ sub }}</td>
+                 <td>
+                     {% for unp in unprepared_list %}
+                         {% if unp.school_subject_id == sub.id %}
+                            {{ unp.unprep_one_used }}
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+                 <td>
+                     {% for unp in unprepared_list %}
+                         {% if unp.school_subject_id == sub.id %}
+                            {{ unp.unprep_two_used }}
+                         {% endif %}
+                     {% endfor %}
+                 </td>
+             </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      </div>
+      {% endblock unprepared %}

@@ -1,0 +1,12 @@
+{% extends 'starter.html' %}
+
+{% block content %}
+    <form method="POST">
+
+        {% csrf_token %}
+        {{ form }}
+
+        <input type="submit">
+    </form>
+
+{% endblock %}

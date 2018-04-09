@@ -1,0 +1,27 @@
+{% extends 'panel_1.html' %}
+
+{% block content %}
+<h2>Szkolna biblioteka</h2>
+<table class="table table-striped">
+         <thead>
+             <tr>
+                 <th>Tytuł</th>
+                 <th>Autor</th>
+                 <th>Gatunet</th>
+                 <th></th>
+              </tr>
+         </thead>
+         <tbody>
+         {% for book in books %}
+             <tr>
+                 <td>{{ book.title }}</td>
+                 <td>{{ book.author }}</a></td>
+                 <td>{{ book.gender }}</td>
+                 <td><a href="/book/{{ book.id }}/{{ subject.id }}/{{ s.id }}/unpr">Więcej</a></td>
+             </tr>
+        {% endfor %}
+        </tbody>
+     </table>
+   </div>
+
+{% endblock %}
