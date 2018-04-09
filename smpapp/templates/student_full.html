@@ -1,4 +1,4 @@
-{% extends 'student_base.html' %}
+{% extends 'panel_2.html' %}
 
       {% block profil %}
       <div class="title">
@@ -32,6 +32,7 @@
                   <th>Id</th>
                   <th>Przedmiot</th>
                    <th>Oceny</th>
+                    <th>Uwagi</th>
               </tr>
          </thead>
          <tbody>
@@ -44,6 +45,16 @@
                          {% for g in grades %}
                              {% if g.student_id == sub.id %}
                                 <li>{{ g.grade }}</li>
+                             {% endif %}
+                         {% endfor %}
+                     </ul>
+
+                 </td>
+                                  <td>
+                     <ul>
+                         {% for g in grades %}
+                             {% if g.student_id == sub.id %}
+                                <li>{{ g.evaluation }}</li>
                              {% endif %}
                          {% endfor %}
                      </ul>

@@ -21,6 +21,7 @@ from smpapp.views import (
     # teacher
     TeacherStartView,
     TeacherView,
+    TeacherProfieView,
     StudentSearchView,
     StudentGradesFormView,
     FinalGradesFormView,
@@ -51,6 +52,7 @@ urlpatterns = [
 
     # teacher
     path('teacher', TeacherStartView.as_view(), name='teacher_start'),
+    path('teacher/<int:pk>', TeacherProfieView.as_view(), name='teacher_profile'),
     path('teacher/search', StudentSearchView.as_view(), name='teacher_search'),
     path('teacher/<int:class_id>/<int:subject_id>', TeacherView.as_view(), name='teacher_class'),
     path('teacher/<int:class_id>/<int:subject_id>/<int:student_id>/grades', StudentGradesFormView.as_view(), name='teacher_edit_grades'),
@@ -65,7 +67,7 @@ urlpatterns = [
     path('logout', LogoutView.as_view(), name='logout'),
     path('password_reset/<int:user_id>', ChangePassView.as_view(), name='password_reset'),
     path('signup', signup, name='signup'),
-    path(r'list_users', UserListView.as_view(), name="list_users"),
+    path('list_users', UserListView.as_view(), name="list_users"),
 
 
     # liblary

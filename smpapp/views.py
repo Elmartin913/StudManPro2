@@ -18,6 +18,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from smpapp.models import (
     SCHOOL_CLASS,
     Student,
+    Teacher,
     SchoolSubject,
     StudentGrades,
     FinalGrades,
@@ -53,7 +54,7 @@ class LPView(View):
 
 class TeacherStartView(View):
     def get(self, request):
-        return render(request, 'teacher_base.html', {'all_class': SCHOOL_CLASS})
+        return render(request, 'panel_1.html', {'all_class': SCHOOL_CLASS})
 
 
 class TeacherView(LoginRequiredMixin,View):
@@ -78,6 +79,13 @@ class TeacherView(LoginRequiredMixin,View):
         }
 
         return render(request, 'teacher_full.html', ctx)
+
+
+class TeacherProfieView(UpdateView):
+    model = User
+    fields = '__all__'
+    template_name = 'teacher_profil.html'
+    success_url = reverse_lazy('teacher_start')
 
 
 class StudentSearchView(View):
@@ -114,6 +122,7 @@ class StudentGradesFormView(View):
         form = StudentGradesForm(request.POST)
         if form.is_valid():
             grade = form.cleaned_data['grade']
+            evaluation = form.cleaned_data['evaluation']
             grades = StudentGrades.objects.filter(
                 student_id=student_id,
                 school_subject=subject_id
@@ -132,6 +141,7 @@ class StudentGradesFormView(View):
                 student_id=student_id,
                 grade = float(grade),
                 avg = avg,
+                evaluation = evaluation,
             )
 
             url = reverse('teacher_class', kwargs={

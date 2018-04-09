@@ -1,7 +1,6 @@
-{% extends 'panel_1.html %}
 
 <ul>
     {% for object in object_list %}
-        <li>{{ object.username }}, {{ object.last_name }}</li>
+        <li>{{ object.username }}, {{ object.last_name }}, {{ object.id }}</li>
     {% endfor %}
 </ul>
