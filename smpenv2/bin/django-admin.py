@@ -1,4 +1,4 @@
-#!/home/elmartin913/workspace/app/studmanpro/smpenv/bin/python3
+#!/home/elmartin913/workspace/app/StudManPro2/smpenv2/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

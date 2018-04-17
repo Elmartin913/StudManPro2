@@ -23,7 +23,7 @@ def unsuspend(admin, request, queryset):
     queryset.update(active=False)
 
 
-unsuspend.short_description = 'Aktywój'
+unsuspend.short_description = 'Aktywuj'
 
 
 @admin.register(Student)

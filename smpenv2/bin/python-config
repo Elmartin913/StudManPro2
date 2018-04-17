@@ -1,4 +1,4 @@
-#!/home/elmartin913/workspace/app/studmanpro/smpenv/bin/python
+#!/home/elmartin913/workspace/app/StudManPro2/smpenv2/bin/python
 
 import sys
 import getopt
